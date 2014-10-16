@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Array of Numbers
+    </title>
+    <style>
+      #deck {
+        width: 52em;
+        background-color: white;
+        color: grey;
+        padding: 2em;
+        text-align: center;
+      }
+ 
+      .card {
+        width: 2em;
+        display: inline-block;
+      }
+ 
+      .swapping {
+        background-color: red;
+        color: blue;
+      }
+    </style>
+  </head>
