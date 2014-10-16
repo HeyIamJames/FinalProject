@@ -5,22 +5,151 @@
       Array of Numbers
     </title>
     <style>
-      #deck {
-        width: 52em;
-        background-color: white;
-        color: grey;
+      #num {
+        width: 32em;
+        background-color: grey;
+        color: white;
         padding: 2em;
         text-align: center;
       }
  
-      .card {
-        width: 2em;
+      .grid {
+        width: 3em;
         display: inline-block;
+        border: 1px dashed red;
       }
  
       .swapping {
-        background-color: red;
-        color: blue;
+        background-color: blue;
+        color: black;
       }
     </style>
   </head>
+  <body>
+    <h1>Shuffling an array of numbers</h1>
+    <ul id="num" class="collection">
+    </ul>
+    <button>Click</button>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      function shuffle(m) {
+      
+        var $m,
+          rand = Math.floor(Math.random() * m),
+          $rand;
+ 
+        $('li').removeClass('swapping');
+ 
+        $mth = $('.grid:eq(' + m + ')')
+          .addClass('swapping')
+          .fadeIn();
+        $rand = $('.grid:eq(' + rand + ')')
+          .addClass('swapping')
+          .fadeIn();
+ 
+        $mth.before($rand);
+        $('.grid:eq(' + rand + ')').before($mth);
+ 
+        if (m > 0) {
+          setTimeout(shuffle, 500, m - 1);
+        } else {
+          $('li').removeClass('swapping');
+        };
+      }
+ 
+      $('button').on('click', function() {
+        shuffle($(".grid").length - 1);
+      });
+ 
+      function num() {
+        this.void = [''];
+        this.numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40'];
+        var thenum = this;
+ 
+        $.each(this.void, function(index, none) {
+          $.each(thenum.numbers, function(index, numbers) {
+            var grid = new newNum(none, numbers);
+            $('#num').append(grid.toHTML());
+          });
+        });
+      }
+ 
+      function newNum(none, numbers) {
+        this.none = none;
+        this.numbers = numbers;
+        this.toHTML = function() {
+          return '<li class="grid">' + "[" + this.numbers + "]" + '</li>';
+        }
+      }
+ 
+      var num = new num();
+    </script>
+  </body>
+</html>
+
+<!-- turn into bianary tree later
+  function BinaryTree(){
+ this.Nodes = new Array();
+ this.level = 0;
+ this.node = 0;
+ 
+ this.setNode = function(value,level,node){
+  if (level === undefined) {
+  this.Nodes[this.btSMF(this.level, this.node)] = value;
+  }else {
+   this.Nodes[this.btSMF(level,node)] = value;
+  }
+ }
+ 
+ this.getNode = function(level, node){
+  if (level === undefined) {
+   return this.Nodes[this.btSMF(this.level,this.node)];
+  }else {
+   return this.Nodes[this.btSMF(level,node)];
+  }
+ }
+ 
+ this.root = function(value){
+  this.level = 0;
+  this.node = 0;
+  if (value !== undefined) {
+   this.Nodes[this.btSMF(this.level,this.node)] = value;
+  }
+  return this.Nodes[this.btSMF(this.level,this.node)];
+ }
+ 
+ this.leftChild = function(value){
+  this.level++;
+  this.node = this.node * 2;
+  if (value !== undefined) {
+   this.Nodes[this.btSMF(this.level,this.node)] = value;
+  }
+  return this.Nodes[this.btSMF(this.level,this.node)];
+ }
+ 
+ this.rightChild = function(value){
+  this.level++;
+  this.node = this.node * 2 + 1;
+  if (value !== undefined) {
+   this.Nodes[this.btSMF(this.level, this.node)] = value;
+  }
+  return this.Nodes[this.btSMF(this.level, this.node)];
+ }
+ 
+ this.parent = function(value){
+  this.level-;
+  this.node = this.node >> 1;
+  if (value !== undefined) {
+   this.Nodes[this.btSMF(this.level, this.node)] = value;
+  }
+  return this.Nodes[this.btSMF(this.level,this.node)];
+ }
+ 
+ this.btSMF = function(level, node){
+  return node + (1 << level) - 1;
+ }
+
+  var ep1 = get_endpoint(sp.x, sp.y, sp.angle+divergence, length);
+      var ep2 = get_endpoint(sp.x, sp.y, sp.angle-divergence, length);
+      
+ -->
