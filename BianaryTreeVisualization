@@ -8,7 +8,6 @@ most basic of steps:
 -nuke button to destory everything
 -ask for $20 to recover everything 
 
--->
 
 <!doctype html>
 <html>
@@ -29,7 +28,7 @@ most basic of steps:
     </body>
     <style>
 
-
+     var numberTree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
       #numberTree {
         width: 52em;
         background-color: blue;
@@ -62,7 +61,6 @@ most basic of steps:
 
 
       
-      var numberTree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
       public numberTree getAll()
       {
@@ -81,9 +79,7 @@ most basic of steps:
 
 
 
-    <!-- this is random shit
-
-    To do this we first need to store a current location in the tree and a way to re-initialise this current location to the root:
+  
 this.level=0;
 this.node=0;
 
@@ -152,3 +148,6 @@ this.root=function(value){
   
   </body>
 </html>
+
+-->
+
